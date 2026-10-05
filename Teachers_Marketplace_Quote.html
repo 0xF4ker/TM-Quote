@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Quotation — Teachers Marketplace Web Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #17294a;
+        --blue: #2667ae;
+        --green: #2b8a4a;
+        --green-soft: #e9f4ec;
+        --blue-soft: #eaf1f9;
+        --ink: #1d2433;
+        --muted: #5b6577;
+        --line: #dde3ea;
+        --paper: #ffffff;
+        --page: #f3f6f9;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font:
+          15px/1.6 "Public Sans",
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      .sheet {
+        max-width: 880px;
+        margin: 32px auto;
+        background: var(--paper);
+        padding: 56px 64px;
+        border-top: 6px solid var(--green);
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        color: var(--navy);
+        font-weight: 600;
+      }
+      h1 {
+        font-size: 40px;
+        line-height: 1.1;
+        margin: 0 0 8px;
+      }
+      h2 {
+        font-size: 24px;
+        margin: 44px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 19px;
+        margin: 0;
+      }
+      p {
+        margin: 0 0 12px;
+        max-width: 72ch;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .small {
+        font-size: 13px;
+      }
+
+      /* Header */
+      .head {
+        display: flex;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 2px 16px;
+        font-size: 13.5px;
+        align-self: start;
+      }
+      .meta dt {
+        color: var(--muted);
+      }
+      .meta dd {
+        margin: 0;
+        font-weight: 600;
+        text-align: right;
+      }
+      .parties {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 28px;
+      }
+      .party {
+        background: var(--page);
+        padding: 14px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .party b {
+        display: block;
+        color: var(--green);
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      .edit {
+        background: #fff7d6;
+        padding: 0 3px;
+        border-radius: 2px;
+      }
+
+      /* Summary figure */
+      .total-band {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .total-band > div {
+        padding: 18px 22px;
+      }
+      .total-band > div + div {
+        border-left: 1px solid var(--line);
+      }
+      .total-band .k {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .total-band .v {
+        font-family: "Newsreader", Georgia, serif;
+        font-size: 30px;
+        color: var(--navy);
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      .total-band .first {
+        background: var(--navy);
+      }
+      .total-band .first .k {
+        color: #b9c7dd;
+      }
+      .total-band .first .v {
+        color: #fff;
+        font-size: 36px;
+      }
+
+      /* Timeline — the one memorable element */
+      .timeline {
+        margin-top: 18px;
+      }
+      .track {
+        position: relative;
+        display: grid;
+        grid-template-columns: 12fr 9fr 9fr;
+        height: 54px;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .seg {
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .seg span {
+        font-weight: 400;
+        opacity: 0.85;
+        margin-left: 8px;
+        font-size: 13px;
+      }
+      .s1 {
+        background: var(--navy);
+      }
+      .s2 {
+        background: var(--blue);
+      }
+      .s3 {
+        background: var(--green);
+      }
+      .gates {
+        position: relative;
+        height: 74px;
+        display: grid;
+        grid-template-columns: 12fr 9fr 9fr;
+      }
+      .gate {
+        position: relative;
+        font-size: 12.5px;
+        padding-top: 14px;
+      }
+      .gate::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 12px;
+        background: var(--ink);
+      }
+      .gate b {
+        display: block;
+        font-size: 14px;
+        color: var(--ink);
+      }
+      .gate.end {
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: right;
+      }
+      .gate.end::before {
+        left: auto;
+        right: 0;
+      }
+      .days {
+        display: grid;
+        grid-template-columns: repeat(30, 1fr);
+        margin-top: 6px;
+        font-size: 10.5px;
+        color: var(--muted);
+      }
+      .days i {
+        font-style: normal;
+        text-align: left;
+      }
+
+      /* Tables */
+      .tbl-wrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th {
+        text-align: left;
+        font-weight: 600;
+        color: var(--muted);
+        font-size: 12.5px;
+        padding: 8px 10px;
+        border-bottom: 2px solid var(--navy);
+      }
+      td {
+        padding: 10px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      td.amt,
+      th.amt {
+        text-align: right;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      td .d {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 2px;
+      }
+      tr.sub td {
+        background: var(--page);
+        font-weight: 700;
+      }
+      tr.grand td {
+        background: var(--navy);
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+        border: none;
+      }
+
+      .phase {
+        margin-top: 28px;
+      }
+      .phase-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .tag {
+        font-size: 12.5px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 99px;
+      }
+      .t1 {
+        background: #e6ebf3;
+        color: var(--navy);
+      }
+      .t2 {
+        background: var(--blue-soft);
+        color: var(--blue);
+      }
+      .t3 {
+        background: var(--green-soft);
+        color: var(--green);
+      }
+      .deliver {
+        margin: 10px 0 0;
+        padding: 12px 16px;
+        background: var(--page);
+        border-left: 3px solid var(--green);
+        font-size: 13.5px;
+      }
+      .deliver b {
+        color: var(--navy);
+      }
+
+      ul.clean {
+        padding-left: 18px;
+        margin: 6px 0 12px;
+      }
+      ul.clean li {
+        margin-bottom: 6px;
+        max-width: 72ch;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .note {
+        border: 1px solid #f0d9a8;
+        background: #fffaf0;
+        padding: 14px 18px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .sign {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-top: 28px;
+      }
+      .sign div {
+        border-top: 1px solid var(--ink);
+        padding-top: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .sign div b {
+        color: var(--ink);
+        display: block;
+      }
+
+      .actions {
+        max-width: 880px;
+        margin: 0 auto 32px;
+        text-align: right;
+      }
+      .actions button {
+        font:
+          600 14px "Public Sans",
+          sans-serif;
+        background: var(--navy);
+        color: #fff;
+        border: 0;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .actions button:focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 720px) {
+        .sheet {
+          padding: 32px 20px;
+          margin: 0;
+        }
+        h1 {
+          font-size: 30px;
+        }
+        .parties,
+        .two,
+        .sign {
+          grid-template-columns: 1fr;
+        }
+        .total-band {
+          grid-template-columns: 1fr;
+        }
+        .total-band > div + div {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+        .seg span {
+          display: none;
+        }
+        .days i:nth-child(odd) {
+          visibility: hidden;
+        }
+        .actions {
+          padding: 12px 20px;
+        }
+      }
+      @media print {
+        @page {
+          size: A4;
+          margin: 14mm;
+        }
+        body {
+          background: #fff;
+          font-size: 12.5px;
+        }
+        .sheet {
+          margin: 0;
+          padding: 0;
+          max-width: none;
+          border-top: 0;
+        }
+        .actions {
+          display: none;
+        }
+        .edit {
+          background: none;
+        }
+        h2 {
+          break-after: avoid;
+        }
+        .phase,
+        tr,
+        .note,
+        .sign {
+          break-inside: avoid;
+        }
+        * {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="actions">
+      <button type="button" onclick="window.print()">
+        Print or save as PDF
+      </button>
+    </div>
+
+    <main class="sheet">
+      <div class="head">
+        <div>
+          <p class="muted small" style="margin-bottom: 6px">Quotation</p>
+          <h1>Teachers Marketplace<br />Web Platform Build</h1>
+          <p class="muted">
+            Design, development and launch of the full three-sided platform
+            described in the Product &amp; Development Brief v1.0.
+          </p>
+        </div>
+        <dl class="meta">
+          <dt>Quote no.</dt>
+          <dd><span class="edit">TM-2026-001</span></dd>
+          <dt>Issue date</dt>
+          <dd>6 October 2026</dd>
+          <dt>Valid until</dt>
+          <dd>17 October 2026</dd>
+          <dt>Currency</dt>
+          <dd>Nigerian Naira (₦)</dd>
+          <dt>Duration</dt>
+          <dd>30 days</dd>
+        </dl>
+      </div>
+
+      <div class="parties">
+        <div class="party">
+          <b>Prepared by</b><span class="edit">ScriptRim</span><br /><span
+            class="edit"
+            >Obadore, Ijegun, Lagos</span
+          ><br /><span class="edit">0xFaker@gmail.com / +2347049876400</span>
+        </div>
+        <div class="party">
+          <b>Prepared for</b>Teachers Marketplace<br /><span class="edit"
+            >Olayemi A.O</span
+          ><br /><span class="edit">[Email] / +2348103014540</span>
+        </div>
+      </div>
+
+      <div class="total-band">
+        <div class="first">
+          <div class="k">Total project fee (fixed)</div>
+          <div class="v">₦1,000,000</div>
+        </div>
+        <div>
+          <div class="k">Delivery</div>
+          <div class="v">30 days</div>
+        </div>
+        <div>
+          <div class="k">Payments</div>
+          <div class="v">4 stages</div>
+        </div>
+      </div>
+      <p class="small muted" style="margin-top: 10px">
+        Hosting, domain and third-party service fees are not included. See
+        Exclusions.
+      </p>
+
+      <!-- TIMELINE -->
+      <h2>Timeline and payment gates</h2>
+      <p>
+        Work runs in three phases, following the build priority in the brief.
+        Each phase starts only after its payment is confirmed.
+      </p>
+
+      <div class="timeline" aria-label="30-day project timeline">
+        <div class="track">
+          <div class="seg s1">Phase 1 <span>Days 1–12</span></div>
+          <div class="seg s2">Phase 2 <span>Days 13–21</span></div>
+          <div class="seg s3">Phase 3 <span>Days 22–30</span></div>
+        </div>
+        <div class="gates">
+          <div class="gate"><b>₦400,000</b>40% to start</div>
+          <div class="gate"><b>₦300,000</b>30% to start Phase 2</div>
+          <div class="gate"><b>₦200,000</b>20% to start Phase 3</div>
+          <div class="gate end"><b>₦100,000</b>10% at handover</div>
+        </div>
+        <div class="days" aria-hidden="true">
+          <i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i
+          ><i>9</i><i>10</i><i>11</i><i>12</i><i>13</i><i>14</i><i>15</i
+          ><i>16</i><i>17</i><i>18</i><i>19</i><i>20</i><i>21</i><i>22</i
+          ><i>23</i><i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i
+          ><i>30</i>
+        </div>
+      </div>
+
+      <!-- BREAKDOWN -->
+      <h2>Scope and cost breakdown</h2>
+
+      <section class="phase">
+        <div class="phase-head">
+          <h3>Phase 1 — Core marketplace</h3>
+          <span class="tag t1">Days 1–12</span>
+        </div>
+        <p class="small muted">
+          Proves the core value: schools, parents and teachers can find and
+          contact each other.
+        </p>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th class="amt">Cost (₦)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Project setup and UI design
+                  <div class="d">
+                    Architecture, database design, design system using the
+                    Teachers Marketplace brand, responsive layouts for mobile
+                    and desktop.
+                  </div>
+                </td>
+                <td class="amt">50,000</td>
+              </tr>
+              <tr>
+                <td>
+                  User accounts and roles
+                  <div class="d">
+                    Sign up as School, Parent or Teacher, each with its own
+                    dashboard. Email and phone sign-up, OTP check, password
+                    reset, Google sign-in, admin role.
+                  </div>
+                </td>
+                <td class="amt">90,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Profiles
+                  <div class="d">
+                    Teacher profile (bio, subjects, qualifications, experience,
+                    rates, demo video, availability). School profile (name,
+                    location, level, open positions). Parent profile (child's
+                    grade, subjects, location, budget). Photo, certificate and
+                    video uploads.
+                  </div>
+                </td>
+                <td class="amt">90,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Search and filters
+                  <div class="d">
+                    Filter by location, subject, level, price, rating and
+                    availability. Separate search flows for schools and for
+                    parents.
+                  </div>
+                </td>
+                <td class="amt">80,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Job and gig board
+                  <div class="d">
+                    Schools post full-time and part-time jobs. Parents post
+                    one-off or recurring lesson requests. Teachers apply, or get
+                    invited directly. Application tracking for all sides.
+                  </div>
+                </td>
+                <td class="amt">90,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Basic in-app messaging
+                  <div class="d">
+                    One-to-one chat between matched parties, with unread counts
+                    and contact-detail masking to keep deals on the platform.
+                  </div>
+                </td>
+                <td class="amt">60,000</td>
+              </tr>
+              <tr class="sub">
+                <td>Phase 1 subtotal</td>
+                <td class="amt">460,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="deliver">
+          <b>You receive:</b> a working staging site where all three user types
+          can sign up, build profiles, search, post and apply for jobs and
+          lessons, and message each other.
+        </div>
+      </section>
+
+      <section class="phase">
+        <div class="phase-head">
+          <h3>Phase 2 — Trust and revenue</h3>
+          <span class="tag t2">Days 13–21</span>
+        </div>
+        <p class="small muted">
+          Adds verification and payments so the platform can start earning.
+        </p>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th class="amt">Cost (₦)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Payments (Paystack)
+                  <div class="d">
+                    Lesson payments held by the platform and released to
+                    teachers after the lesson is confirmed. Automatic 10–20%
+                    commission. School and teacher subscriptions. Placement fee
+                    and verification fee invoices. Payout to teacher bank
+                    accounts.
+                  </div>
+                </td>
+                <td class="amt">120,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Verification and admin panel
+                  <div class="d">
+                    Review uploaded certificates and TRCN numbers, approve or
+                    reject teachers, award the verified badge, moderate
+                    listings, suspend users, handle disputes and refunds, view
+                    revenue reports.
+                  </div>
+                </td>
+                <td class="amt">100,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Booking calendar
+                  <div class="d">
+                    Teachers set availability. Parents book lesson slots,
+                    including weekly recurring lessons. Reschedule and cancel
+                    rules.
+                  </div>
+                </td>
+                <td class="amt">50,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Ratings and reviews
+                  <div class="d">
+                    Star rating and comment after each completed engagement.
+                    Only real, paid engagements can leave a review. Average
+                    shown on profiles and used in search.
+                  </div>
+                </td>
+                <td class="amt">50,000</td>
+              </tr>
+              <tr class="sub">
+                <td>Phase 2 subtotal</td>
+                <td class="amt">320,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="deliver">
+          <b>You receive:</b> live payments in Paystack test mode, a working
+          admin back-office, bookings and reviews on staging.
+        </div>
+      </section>
+
+      <section class="phase">
+        <div class="phase-head">
+          <h3>Phase 3 — Growth features and launch</h3>
+          <span class="tag t3">Days 22–30</span>
+        </div>
+        <p class="small muted">
+          Retention features, final testing and going live.
+        </p>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th class="amt">Cost (₦)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Notifications
+                  <div class="d">
+                    Email (SendGrid), SMS (Termii) and browser push alerts for
+                    new matches, messages, applications, bookings and payments.
+                  </div>
+                </td>
+                <td class="amt">60,000</td>
+              </tr>
+              <tr>
+                <td>
+                  School resource hub
+                  <div class="d">
+                    Store where schools buy templates and guides as one-time
+                    purchases, with secure downloads. You upload the documents
+                    from the admin panel.
+                  </div>
+                </td>
+                <td class="amt">50,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Substitute / relief teacher pool
+                  <div class="d">
+                    Teachers opt in as available for short-notice work. Schools
+                    post urgent requests and nearby available teachers are
+                    alerted. Can be set as a paid school feature.
+                  </div>
+                </td>
+                <td class="amt">40,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Featured and sponsored listings
+                  <div class="d">
+                    Teachers and schools pay to appear at the top of search
+                    results for a set period. Clearly labelled as sponsored.
+                  </div>
+                </td>
+                <td class="amt">30,000</td>
+              </tr>
+              <tr>
+                <td>
+                  Testing, deployment and handover
+                  <div class="d">
+                    End-to-end testing of every flow, security checks, switch
+                    payments to live mode, deploy to your hosting, admin
+                    training session, source code and documentation handover.
+                  </div>
+                </td>
+                <td class="amt">40,000</td>
+              </tr>
+              <tr class="sub">
+                <td>Phase 3 subtotal</td>
+                <td class="amt">220,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="deliver">
+          <b>You receive:</b> the complete platform live on your domain, full
+          source code, admin guide, and a recorded training session.
+        </div>
+      </section>
+
+      <div class="tbl-wrap" style="margin-top: 28px">
+        <table>
+          <tbody>
+            <tr>
+              <td>Phase 1 — Core marketplace</td>
+              <td class="amt">460,000</td>
+            </tr>
+            <tr>
+              <td>Phase 2 — Trust and revenue</td>
+              <td class="amt">320,000</td>
+            </tr>
+            <tr>
+              <td>Phase 3 — Growth features and launch</td>
+              <td class="amt">220,000</td>
+            </tr>
+            <tr class="grand">
+              <td>Total (fixed price, hosting excluded)</td>
+              <td class="amt">₦1,000,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PAYMENT -->
+      <h2>Payment schedule</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>When it is due</th>
+              <th class="amt">%</th>
+              <th class="amt">Amount (₦)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Mobilisation</td>
+              <td>Before Phase 1 starts (on signing)</td>
+              <td class="amt">40%</td>
+              <td class="amt">400,000</td>
+            </tr>
+            <tr>
+              <td>2. Phase 2 release</td>
+              <td>After Phase 1 demo is approved, before Phase 2 starts</td>
+              <td class="amt">30%</td>
+              <td class="amt">300,000</td>
+            </tr>
+            <tr>
+              <td>3. Phase 3 release</td>
+              <td>After Phase 2 demo is approved, before Phase 3 starts</td>
+              <td class="amt">20%</td>
+              <td class="amt">200,000</td>
+            </tr>
+            <tr>
+              <td>4. Final balance</td>
+              <td>
+                On launch, before source code and admin credentials are
+                transferred
+              </td>
+              <td class="amt">10%</td>
+              <td class="amt">100,000</td>
+            </tr>
+            <tr class="sub">
+              <td colspan="3">Total</td>
+              <td class="amt">1,000,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="clean small" style="margin-top: 12px">
+        <li>
+          Payment is by bank transfer to
+          <span class="edit">Opay, Divine Samuel Attah-Ohiemi, 8107146846</span
+          >.
+        </li>
+        <li>
+          Work on a phase starts within 1 working day of payment being
+          confirmed. If a payment is late, the timeline moves by the same number
+          of days.
+        </li>
+        <li>
+          At the end of each phase you get a demo on the staging site and 2
+          working days to review. Approval, or no response after 2 working days,
+          releases the next payment.
+        </li>
+      </ul>
+
+      <!-- STACK -->
+      <h2>Technology</h2>
+      <div class="two">
+        <ul class="clean">
+          <li><b>Frontend:</b> Next.js (React), fully responsive</li>
+          <li><b>Backend:</b> Node.js with Express and TypeScript</li>
+          <li><b>Database:</b> PostgreSQL</li>
+          <li><b>Payments:</b> Paystack</li>
+        </ul>
+        <ul class="clean">
+          <li><b>File storage:</b> Cloudinary or AWS S3</li>
+          <li><b>Email:</b> SendGrid</li>
+          <li><b>SMS:</b> Termii</li>
+          <li><b>Hosting:</b> your choice of Render, DigitalOcean or AWS</li>
+        </ul>
+      </div>
+
+      <!-- INCLUDED / EXCLUDED -->
+      <h2>What is included and what is not</h2>
+      <div class="two">
+        <div>
+          <h3 style="font-size: 17px; margin-bottom: 6px">Included</h3>
+          <ul class="clean small">
+            <li>Everything in the cost breakdown above</li>
+            <li>
+              Responsive web app that works on phones, tablets and desktops
+            </li>
+            <li>2 rounds of changes per phase within the agreed scope</li>
+            <li>Basic SEO setup (page titles, sitemap, share previews)</li>
+            <li>Full ownership of the source code after final payment</li>
+            <li>30 days of free bug fixing after launch</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 17px; margin-bottom: 6px">
+            Not included (paid by client)
+          </h3>
+          <ul class="clean small">
+            <li>Hosting, servers and database hosting</li>
+            <li>Domain name and business email</li>
+            <li>Paystack transaction charges</li>
+            <li>
+              SendGrid, Termii SMS credits and Cloudinary/S3 usage beyond free
+              tiers
+            </li>
+            <li>Background-check provider fees</li>
+            <li>Native iOS and Android apps</li>
+            <li>Writing or creating resource hub documents and site copy</li>
+            <li>New features outside this brief</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ASSUMPTIONS -->
+      <h2>Assumptions</h2>
+      <ul class="clean">
+        <li>
+          <b>Fast feedback.</b> The 30-day timeline needs answers to questions
+          within 1 working day and phase reviews within 2 working days.
+        </li>
+        <li>
+          <b>TRCN checks.</b> TRCN does not offer a public API for automatic
+          checks, so verification is done by your team in the admin panel using
+          the uploaded certificate and TRCN number. If you later get API access
+          from TRCN or a verification provider, it can be connected as a
+          separate job.
+        </li>
+        <li>
+          <b>Background checks.</b> The platform records the result and shows
+          the badge. The check itself is done by a third-party provider you
+          choose.
+        </li>
+        <li>
+          <b>Holding lesson payments.</b> Paystack is not a licensed escrow
+          service. Lesson payments are collected into your Paystack balance and
+          paid out to teachers after the lesson is confirmed. Please confirm
+          this approach with your legal or finance adviser.
+        </li>
+        <li>
+          <b>Client items.</b> You provide the logo files, brand colours, a
+          Paystack business account, and accounts for hosting, SendGrid and
+          Termii before Phase 3.
+        </li>
+        <li>
+          <b>Placement fees.</b> Fees are invoiced through the platform when a
+          school marks a teacher as hired. Off-platform hires cannot be tracked
+          automatically.
+        </li>
+      </ul>
+
+      <!-- TERMS -->
+      <h2>Terms</h2>
+      <ul class="clean small">
+        <li>
+          This is a fixed-price quote. The total will not go above ₦1,000,000
+          for the scope listed here.
+        </li>
+        <li>
+          Change requests outside the scope are quoted separately and may extend
+          the timeline.
+        </li>
+        <li>
+          Payments already made for completed phases are not refundable. Either
+          party may stop the project at the end of any phase.
+        </li>
+        <li>
+          Ownership of code and designs passes to the client after the final
+          payment is received.
+        </li>
+        <li>
+          After the 30-day free bug-fix period, ongoing support is available on
+          a monthly retainer, quoted separately.
+        </li>
+      </ul>
+
+      <div class="note" style="margin-top: 24px">
+        To accept, sign below and pay the 40% mobilisation fee of
+        <b>₦400,000</b>. Phase 1 starts the next working day.
+      </div>
+
+      <div class="sign">
+        <div>
+          <b>For <span class="edit">ScriptRim</span></b
+          >Name, signature and date
+        </div>
+        <div><b>For Teachers Marketplace</b>Name, signature and date</div>
+      </div>
+    </main>
+  </body>
+</html>
